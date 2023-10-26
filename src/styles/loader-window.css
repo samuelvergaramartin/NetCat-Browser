@@ -1,0 +1,13 @@
+.loaderWindowsBackground {
+    background-color: blue;
+}
+.loaderWindowsTitle {
+    background-color: red;
+    text-align: center;
+    color: cyan;
+}
+.loaderWindowImage {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}

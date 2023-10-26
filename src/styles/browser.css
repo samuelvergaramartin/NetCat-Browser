@@ -1,0 +1,50 @@
+/*Color background barra: #42414d  - Para el tema oscuro barra*/
+/*Color backgound contenedor principal: #2B2A33 - Para el tema oscuro de la pagina*/
+
+body  {
+    background-color: #2B2A33;
+}
+.header_table {
+    background-color: #42414d;
+    color: aqua;
+}
+.url_input {
+    background-color: #2B2A33;
+    color: red;
+    ::placeholder {
+        color: red;
+    }
+}
+.main_image {
+    margin-left: 90%;
+    scale: 0.3;
+    align-items: center;
+}
+.NetCat-Browser-text {
+    margin-left: 130%;
+}
+.search_fieldset_input {
+    box-sizing: border-box;
+    margin-left: 120%;
+    size: 100;
+    background-color: #42414d;
+    ::placeholder {
+        background-color: red;
+        color: cyan;
+    }
+}
+.search_button {
+    background-color: red;
+    color: cyan;
+}
+.url_search_button {
+    background-color: red;
+    color: cyan;
+}
+.options {
+    background-color: red;
+    color: cyan;
+}
+.main {
+    background-color: #2B2A33;
+}
