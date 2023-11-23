@@ -1,3 +1,3 @@
-const startNetCatBrowser = require('./src/start/start');
+const { startNetCatBrowser } = require('./src/start/start');
 
 startNetCatBrowser();

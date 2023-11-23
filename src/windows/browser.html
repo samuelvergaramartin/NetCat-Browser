@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<link rel="icon" type="image/x-icon" href="../images/NetCat-2-years-image.ico">-->
+    <link rel="icon" type="image/x-icon" href="/src/images/NetCat-2-years-image.ico">
     <link rel="stylesheet" href="../styles/browser.css">
     <title>NetCat-Browser</title>
 </head>
@@ -17,7 +19,8 @@
                             <input class="url_input" type="text" placeholder="Buscar con ToSDR o introducir una dirección" size="70" id="url_input">
                             <button class="url_search_button" id="url_search_button" type="button">Buscar URL</button>
                             <button class="options" id="return_home_button" type="button">Volver a inicio</button>
-                            <button class="options" id="new_window_new_home_button" href="./browser.html">Nuevo inicio en otra ventana</button>
+                            <button class="options" id="new_window_new_home_button" type="button">Nuevo inicio en otra ventana</button>
+                            <button class="options" id="search_in_other_window" type="button">Buscar aparte en otra ventana</button>
                         </form>
                     </fieldset>
                 </tr>
@@ -25,7 +28,25 @@
         </table>
     </div>
     <div class="main" id="main_container">
-        <table>
+        <div class="logo">
+            <div class="main_image">
+                <img src="../images/NetCat-2-years-image.png" alt="ERROR: No se ha podido cargar la imagen de carga">
+            </div>
+            <div class="NetCat-Browser-text">
+                <h1>NetCat Browser</h1>
+            </div>
+        </div>
+        <div class="search_fieldset_input_container">
+            <div>
+                <form>
+                    <input type="text" size="50" placeholder="Buscar con ToSDR o introducir una dirección" id="search_input">
+                    <button class="search_button" id="search_button" type="button">
+                        Buscar
+                    </button>
+                </form>
+            </div>
+        </div>
+        <!--<table>
             <tbody>
                 <tr>
                     <td>
@@ -49,8 +70,8 @@
                     </td>
                 </tr>
             </tbody>
-        </table>
+        </table>-->
     </div>
-    <script type="module" src="../backend/browser-page.js"></script>
+    <script src="../backend/web/browser-page.js"></script>
 </body>
 </html>

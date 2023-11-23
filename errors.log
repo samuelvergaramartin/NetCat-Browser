@@ -1,3 +1,0 @@
-[90491:1025/220526.704667:ERROR:object_proxy.cc(590)] Failed to call method: org.freedesktop.DBus.Properties.Get: object_path= /org/freedesktop/portal/desktop: org.freedesktop.DBus.Error.InvalidArgs: La interfaz «org.freedesktop.portal.FileChooser» no existe
-[90491:1025/220526.704903:ERROR:select_file_dialog_linux_portal.cc(274)] Failed to read portal version property
-[90491:1025/220526.765366:ERROR:object_proxy.cc(590)] Failed to call method: org.freedesktop.portal.Settings.Read: object_path= /org/freedesktop/portal/desktop: org.freedesktop.DBus.Error.UnknownMethod: No existe la interfaz «org.freedesktop.portal.Settings» en el objeto en la ruta /org/freedesktop/portal/desktop

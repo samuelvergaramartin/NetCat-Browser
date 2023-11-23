@@ -1,25 +1,29 @@
 const { app, BrowserWindow } = require('electron');
-const path = require('path')
+const control_unit = require('../backend/nodejs/socket/core/control-unit');
+const path = require('path');
 
-async function startNetCatBrowser() {
-    let mainWindow;
+async function startNetCatBrowser(mainWindow) {
+    var mainWindow;
     const routes = {
         loaderPage: "./src/windows/index.html",
         browserPage: "./src/windows/browser.html"
     };
 
     app.on('ready', () => {
-        mainWindow = new BrowserWindow(
-            { 
-                width: 800,
-                height: 600,
-                icon: path.join(__dirname, "../images/NetCat-2-years-image.png")
-            }
-        );
+        mainWindow = new BrowserWindow({ 
+        width: 800, 
+        height: 600,
+        minWidth: 400,
+        minHeight: 400,
+        webPreferences: {
+            preload: path.join(__dirname, '../backend/nodejs/middleware/bridge.js')
+        },
+        icon: path.join(__dirname, '../images/NetCat-2-years-image.ico') });
 
-        mainWindow.loadFile(routes.loaderPage); 
+        mainWindow.loadFile(routes.loaderPage);
+        mainWindow.setMenu(null);
 
-        mainWindow.webContents.once('did-finish-load', () => {
+        mainWindow.webContents.once('did-finish-load', (evento) => {
                 const loadPage = setTimeout(() => {
                     mainWindow.loadFile(routes.browserPage);
                 }, 4000);
@@ -27,7 +31,9 @@ async function startNetCatBrowser() {
                     clearTimeout(loadPage);
                 }, 5000);
         });
+
+        control_unit(mainWindow);
     });
 }
 
-module.exports = startNetCatBrowser;
+module.exports = { startNetCatBrowser };
