@@ -51,6 +51,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
             main_container.appendChild(iframe);
         }
+        const data = {
+            location: "browser-page",
+            message: "search something",
+            query: `${searchQuery}`,
+            status: 200
+        }
+        window.electronAPI.input((data));
     });
 
     search_button.addEventListener('click', () => {
@@ -77,20 +84,33 @@ document.addEventListener("DOMContentLoaded", function() {
             iframe.height = "985";
     
             main_container.appendChild(iframe);
+            const data = {
+                location: "browser-page",
+                message: "search something",
+                query: `${searchQuery}`,
+                status: 200
+            }
+            window.electronAPI.input((data));
         }
     });
 
     return_home_button.addEventListener('click', ()=> {
+        const data = {
+            location: "browser-page",
+            message: "returned home",
+            status: 200
+        }
+        window.electronAPI.input((data));
         window.location.href = routes.browserPage;
     })
 
     new_window_new_home_button.addEventListener('click', ()=> {
-        /*const data = {
+        const data = {
             location: "browser-page",
-            message: "nueva ventana",
+            message: "returned home",
             status: 200
         }
-        window.electronAPI.input((data));*/
+        window.electronAPI.input((data));
         window.open(routes.browserPage, "_blank");
     })
 
@@ -108,6 +128,13 @@ document.addEventListener("DOMContentLoaded", function() {
         else {
             window.open(searchQuery, "_blank");
         }
+        const data = {
+            location: "browser-page",
+            message: "search something",
+            query: `${searchQuery}`,
+            status: 200
+        }
+        window.electronAPI.input((data));
     })
 
     search_input.addEventListener('keypress', (key) => {
@@ -136,6 +163,14 @@ document.addEventListener("DOMContentLoaded", function() {
     
                 main_container.appendChild(iframe)
             }
+            const data = {
+                location: "browser-page",
+                message: "search something",
+                query: `${searchQuery}`,
+                status: 200
+            }
+            window.electronAPI.input((data));
+
         }
     })
 
@@ -177,6 +212,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
                 main_container.appendChild(iframe);
             }
+            const data = {
+                location: "browser-page",
+                message: "search something",
+                query: `${searchQuery}`,
+                status: 200
+            }
+            window.electronAPI.input((data));
         }
     })
 

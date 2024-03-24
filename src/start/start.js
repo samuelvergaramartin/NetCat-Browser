@@ -18,7 +18,7 @@ async function startNetCatBrowser(mainWindow) {
         webPreferences: {
             preload: path.join(__dirname, '../backend/nodejs/middleware/bridge.js')
         },
-        icon: path.join(__dirname, '../images/NetCat-2-years-image.ico') });
+        icon: path.join(__dirname, '../images/NetCat-Browser.ico') });
 
         mainWindow.loadFile(routes.loaderPage);
         mainWindow.setMenu(null);
