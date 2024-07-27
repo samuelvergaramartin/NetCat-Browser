@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         void 0;
                     }
                     else {
-                        searchUrl = `https://search.tosdr.org/search?q=${encodeURIComponent(searchQuery)}&    categories=general&language=es-ES`;
+                        searchUrl = `https://www.google.es/search?q=${encodeURIComponent(searchQuery)}`;
                     }
             }
 
@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     search_button.addEventListener('click', () => {
         const searchQuery = search_input.value;
-        const searchUrl = `https://search.tosdr.org/search?q=${encodeURIComponent(searchQuery)}&    categories=general&language=es-ES`;
+        const searchUrl = `https://www.google.es/search?q=${encodeURIComponent(searchQuery)}`;
 
         if(searchQuery.length == 0) {
             const data = {
@@ -140,7 +140,7 @@ document.addEventListener("DOMContentLoaded", function() {
     search_input.addEventListener('keypress', (key) => {
         if(key.key == "Enter") {
             const searchQuery = search_input.value;
-            const searchUrl = `https://search.tosdr.org/search?q=${encodeURIComponent(searchQuery)}&    categories=general&language=es-ES`;
+            const searchUrl = `https://www.google.es/search?q=${encodeURIComponent(searchQuery)}`;
 
             if(searchQuery.length == 0) {
                 const data = {
@@ -194,7 +194,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         void 0;
                     }
                     else {
-                        searchUrl = `https://search.tosdr.org/search?q=${encodeURIComponent(searchQuery)}&    categories=general&language=es-ES`;
+                        searchUrl = `https://www.google.es/search?q=${encodeURIComponent(searchQuery)}`;
                     }
             }
 

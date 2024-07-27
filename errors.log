@@ -1,5 +1,12 @@
-(node:142973) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 11 ready listeners added to [RPCClient]. Use emitter.setMaxListeners() to increase limit
+(node:15935) electron: Failed to load URL: https://www.google.es/search?q=Hola with error: ERR_BLOCKED_BY_RESPONSE
 (Use `electron --trace-warnings ...` to show where the warning was created)
-Warning: loader_scanned_icd_add: Could not get 'vkCreateInstance' via 'vk_icdGetInstanceProcAddr' for ICD libGLX_nvidia.so.0
-Warning: /usr/lib32/libvulkan_radeon.so: clase ELF errónea: ELFCLASS32
-Warning: loader_icd_scan: Failed loading library associated with ICD JSON /usr/lib32/libvulkan_radeon.so. Ignoring this JSON
+(node:15935) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 11 ready listeners added to [RPCClient]. Use emitter.setMaxListeners() to increase limit
+Warning: vkCreateInstance: Found no drivers!
+Warning: vkCreateInstance failed with VK_ERROR_INCOMPATIBLE_DRIVER
+    at CheckVkSuccessImpl (../../third_party/dawn/src/dawn/native/vulkan/VulkanError.cpp:88)
+    at CreateVkInstance (../../third_party/dawn/src/dawn/native/vulkan/BackendVk.cpp:458)
+    at Initialize (../../third_party/dawn/src/dawn/native/vulkan/BackendVk.cpp:344)
+    at Create (../../third_party/dawn/src/dawn/native/vulkan/BackendVk.cpp:266)
+    at operator() (../../third_party/dawn/src/dawn/native/vulkan/BackendVk.cpp:521)
+
+/home/sam170703dev/Documentos/GitHub/NetCat-Browser/node_modules/electron/dist/electron exited with signal SIGINT
