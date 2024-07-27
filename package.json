@@ -1,0 +1,17 @@
+{
+  "name": "netcat-browser",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron . 2> errors.log",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "electron": "^31.3.0",
+    "electron-as-browser": "^1.0.0"
+  }
+}
