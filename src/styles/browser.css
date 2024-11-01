@@ -1,0 +1,97 @@
+/*Color background barra: #42414d  - Para el tema oscuro barra*/
+/*Color backgound contenedor principal: #2B2A33 - Para el tema oscuro de la pagina*/
+
+body  {
+    background-color: #2B2A33;
+}
+.header_table {
+    background-color: #42414d;
+    color: aqua;
+}
+.url_input {
+    background-color: #2B2A33;
+    color: red;
+    ::placeholder {
+        color: red;
+    }
+}
+.logo {
+    display: flex;
+    justify-content: center;
+}
+.search_fieldset_input_container{
+    display: flex;
+    justify-content: center;
+}
+.search_fieldset_input_container > div {
+    padding-left: 30px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-right: 30px;
+    background-color: #42414d;
+    border-style: solid;
+    border-width: 3px;
+    border-color: cyan;
+    box-sizing: border-box;
+    
+    input[type=text] {
+        background-color: red;
+        color: cyan;
+        font-size:25px;
+    }
+
+    ::placeholder {
+        font-size: 20px;
+        background-color: red;
+        color: cyan;
+    }
+}
+.main_image {
+    scale: 0.5;
+}
+.NetCat-Browser-text {
+    padding-top: 150px;
+    margin-left: -100px;
+    color: cyan;
+}
+.search_button {
+    font-size: 20px;
+    background-color: red;
+    color: cyan;
+}
+.search_button:hover {
+    background-color: orange;
+}
+/*.main_image {
+    margin-left: 90%;
+    scale: 0.3;
+    align-items: center;
+}
+.NetCat-Browser-text {
+    margin-left: 130%;
+}
+.search_fieldset_input {
+    box-sizing: border-box;
+    margin-left: 120%;
+    size: 100;
+    background-color: #42414d;
+    ::placeholder {
+        background-color: red;
+        color: cyan;
+    }
+}
+.search_button {
+    background-color: red;
+    color: cyan;
+}*/
+.url_search_button {
+    background-color: red;
+    color: cyan;
+}
+.options {
+    background-color: red;
+    color: cyan;
+}
+.main {
+    background-color: #2B2A33;
+}
