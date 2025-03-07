@@ -15,20 +15,23 @@ document.addEventListener("DOMContentLoaded", function() {
         errorToLoadPage: "../windows/errorToLoadPage.html"
     
     };
-    url_search_button.addEventListener('click', () => {
-        const searchQuery = url_input.value;
-        var searchUrl = `${searchQuery}`;
 
-        if(searchQuery.length == 0) {
-            const data = {
-                location: "browser-page",
-                message: "campo url vacio",
-                status: 400
+    //FUNCIONES
+    function searchURL(evento) {
+        const searchQuery = url_input.value;
+            var searchUrl = `${searchQuery}`;
+
+            if(searchQuery.length == 0) {
+                const data = {
+                    location: "browser-page",
+                    message: "campo url vacio",
+                    status: 400
+                }
+                window.electronAPI.input((data));
             }
-            window.electronAPI.input((data));
-        }
-        else {
-            if(!searchUrl.startsWith("https://") && !searchUrl.startsWith("http://")) {
+            else {
+                if(evento) evento.preventDefault();
+                if(!searchUrl.startsWith("https://") && !searchUrl.startsWith("http://")) {
                     if(searchUrl.startsWith("file")) {
                         void 0;
                     }
@@ -37,19 +40,59 @@ document.addEventListener("DOMContentLoaded", function() {
                     }
             }
 
-            if(!url_input.value || url_input.value == null || url_input.value == "") {
-                return;
-            }
-            while (main_container.firstChild) {
-                main_container.removeChild(main_container.firstChild);
-            }
+                if(!url_input.value || url_input.value == null || url_input.value == "") {
+                    return;
+                }
+                while (main_container.firstChild) {
+                    main_container.removeChild(main_container.firstChild);
+                }
 
-            const iframe = document.createElement("iframe");
-            iframe.src = searchUrl;
-            iframe.width = "100%";
-            iframe.height = "985";
+                const iframe = document.createElement("iframe");
+                iframe.src = searchUrl;
+                iframe.width = "100%";
+                iframe.height = "985";
 
-            main_container.appendChild(iframe);
+                main_container.appendChild(iframe);
+            }
+            const data = {
+                location: "browser-page",
+                message: "search something",
+                query: `${searchQuery}`,
+                status: 200
+            }
+            window.electronAPI.input((data));
+    }
+    function backHome() {
+        const data = {
+            location: "browser-page",
+            message: "returned home",
+            status: 200
+        }
+        window.electronAPI.input((data));
+        window.location.href = routes.browserPage;
+    }
+    function newHome() {
+        const data = {
+            location: "browser-page",
+            message: "returned home",
+            status: 200
+        }
+        window.electronAPI.input((data));
+        window.open(routes.browserPage, "_blank");
+    }
+    function searchInNewWindow() {
+        const searchQuery = url_input.value;
+
+        if(searchQuery.length == 0) {
+            const data = {
+                location: "browser-page",
+                message: "campo url vacio ventana aparte",
+                status: 400
+            }
+            window.electronAPI.input((data));
+        }
+        else {
+            window.open(searchQuery, "_blank");
         }
         const data = {
             location: "browser-page",
@@ -58,9 +101,8 @@ document.addEventListener("DOMContentLoaded", function() {
             status: 200
         }
         window.electronAPI.input((data));
-    });
-
-    search_button.addEventListener('click', () => {
+    }
+    function search() {
         const searchQuery = search_input.value;
         const searchUrl = `https://search.tosdr.org/search?q=${encodeURIComponent(searchQuery)}&    categories=general&language=es-ES`;
 
@@ -92,133 +134,61 @@ document.addEventListener("DOMContentLoaded", function() {
             }
             window.electronAPI.input((data));
         }
-    });
+    }
 
-    return_home_button.addEventListener('click', ()=> {
-        const data = {
-            location: "browser-page",
-            message: "returned home",
-            status: 200
-        }
-        window.electronAPI.input((data));
-        window.location.href = routes.browserPage;
-    })
 
-    new_window_new_home_button.addEventListener('click', ()=> {
-        const data = {
-            location: "browser-page",
-            message: "returned home",
-            status: 200
-        }
-        window.electronAPI.input((data));
-        window.open(routes.browserPage, "_blank");
-    })
+    function searchInNewWindowResolved() {
+        const searchQuery = url_input.value | search_input.value;
+        let data;
 
-    search_in_other_window_boton.addEventListener('click', () => {
-        const searchQuery = url_input.value;
-
-        if(searchQuery.length == 0) {
-            const data = {
-                location: "browser-page",
-                message: "campo url vacio ventana aparte",
-                status: 400
-            }
-            window.electronAPI.input((data));
-        }
-        else {
-            window.open(searchQuery, "_blank");
-        }
-        const data = {
-            location: "browser-page",
-            message: "search something",
-            query: `${searchQuery}`,
-            status: 200
-        }
-        window.electronAPI.input((data));
-    })
-
-    search_input.addEventListener('keypress', (key) => {
-        if(key.key == "Enter") {
-            const searchQuery = search_input.value;
-            const searchUrl = `https://search.tosdr.org/search?q=${encodeURIComponent(searchQuery)}&    categories=general&language=es-ES`;
-
-            if(searchQuery.length == 0) {
-                const data = {
-                    location: "browser-page",
-                    message: "campo busqueda vacio",
-                    status: 400
-                }
-                window.electronAPI.input((data));
-            }
-            else {
-                while (main_container.firstChild) {
-                    main_container.removeChild(main_container.firstChild);
-                }
-    
-                const iframe = document.createElement("iframe");
-                iframe.id = "my-iframe";
-                iframe.src = searchUrl;
-                iframe.width = "100%";
-                iframe.height = "985";
-    
-                main_container.appendChild(iframe)
-            }
-            const data = {
+        if(url_input.value && url_input.value.length > 0) {
+            data = {
                 location: "browser-page",
                 message: "search something",
                 query: `${searchQuery}`,
                 status: 200
             }
             window.electronAPI.input((data));
+        }
+        else {
+            
+        }
+    }
+    //---------
 
+    url_search_button.addEventListener('click', () => {
+        //searchURL();
+        searchInNewWindow();
+    });
+
+    search_button.addEventListener('click', () => {
+        //search();
+        searchInNewWindow();
+    });
+
+    return_home_button.addEventListener('click', ()=> {
+        backHome();
+    })
+
+    new_window_new_home_button.addEventListener('click', ()=> {
+        newHome();
+    })
+
+    search_in_other_window_boton.addEventListener('click', () => {
+        searchInNewWindow();
+    })
+
+    search_input.addEventListener('keypress', (key) => {
+        if(key.key == "Enter") {
+            //search();
+            searchInNewWindow();
         }
     })
 
     url_input.addEventListener('keypress', (evento) => {
         if(evento.key == "Enter") { 
-            const searchQuery = url_input.value;
-            var searchUrl = `${searchQuery}`;
-
-            if(searchQuery.length == 0) {
-                const data = {
-                    location: "browser-page",
-                    message: "campo url vacio",
-                    status: 400
-                }
-                window.electronAPI.input((data));
-            }
-            else {
-                evento.preventDefault();
-                if(!searchUrl.startsWith("https://") && !searchUrl.startsWith("http://")) {
-                    if(searchUrl.startsWith("file")) {
-                        void 0;
-                    }
-                    else {
-                        searchUrl = `https://search.tosdr.org/search?q=${encodeURIComponent(searchQuery)}&    categories=general&language=es-ES`;
-                    }
-            }
-
-                if(!url_input.value || url_input.value == null || url_input.value == "") {
-                    return;
-                }
-                while (main_container.firstChild) {
-                    main_container.removeChild(main_container.firstChild);
-                }
-
-                const iframe = document.createElement("iframe");
-                iframe.src = searchUrl;
-                iframe.width = "100%";
-                iframe.height = "985";
-
-                main_container.appendChild(iframe);
-            }
-            const data = {
-                location: "browser-page",
-                message: "search something",
-                query: `${searchQuery}`,
-                status: 200
-            }
-            window.electronAPI.input((data));
+            //searchURL(evento);
+            searchInNewWindow();
         }
     })
 
