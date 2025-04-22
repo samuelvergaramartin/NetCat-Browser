@@ -77,8 +77,9 @@ async function control_unit(mainWindow) {
                         minHeight: 400,
                         icon: path.join(__dirname, '../images/NetCat-2-years-image.ico') });
                     
-                    newWindow.loadFile(routes.browserPage);
                     newWindow.setMenu(null);
+                    newWindow.loadFile(routes.browserPage);
+                    
                 }
             }
             if(data.status == core_responses.status.success) {
