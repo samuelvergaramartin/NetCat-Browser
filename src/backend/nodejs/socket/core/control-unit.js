@@ -1,19 +1,6 @@
 const { ipcMain, BrowserWindow, dialog } = require('electron');
-const db = require('megadb');
-const main_db = new db.crearDB('mainDB', 'main_db');
-const os = require('os');
 const { core_responses, locations, NetCatBrowserEvents } = require('../data/coreData');
 const path = require('path');
-const osData = {
-    db_name: "main_db",
-    platform: os.platform(),
-    homedir: os.homedir(),
-    hostname: os.hostname(),
-    tempdir: os.tmpdir(),
-    username: os.userInfo().username
-};
-const createMainDB = require('../scripts/createMainDB');
-const updateMainDB = require('../scripts/updateMainDB');
 const routes = {
     loaderPage: "./src/windows/index.html",
     browserPage: "./src/windows/browser.html"
@@ -23,45 +10,12 @@ async function control_unit(mainWindow) {
     ipcMain.on('data', async (ipcEvent, data) => {
         if(data.location == locations.start_file) {
             if(data.message == NetCatBrowserEvents.starting_app) {
-                const db_data = await main_db.get("db_name");
-                if(!db_data || db_data !== "main_db") {
-                    const statusCode = await createMainDB(osData);
-                    if(statusCode == core_responses.status.success) {
-                        const coreResponse = {
-                            location: core_responses.locations.control_unit,
-                            message: core_responses.messages.success,
-                            status: core_responses.status.success
-                        }
-                        return ipcEvent.reply(NetCatBrowserEvents['core-response'], coreResponse);
-                    }
-                    else if(statusCode == core_responses.status.error) {
-                        const coreResponse = {
-                            location: core_responses.locations.control_unit,
-                            message: core_responses.messages.error,
-                            status: core_responses.status.error
-                        }
-                        return ipcEvent.reply(NetCatBrowserEvents['core-response'], coreResponse);
-                    }
+                const coreResponse = {
+                    location: core_responses.locations.control_unit,
+                    message: core_responses.messages.success,
+                    status: core_responses.status.success
                 }
-                else {
-                    const statusCode = await updateMainDB(osData);
-                    if(statusCode == core_responses.status.success) {
-                        const coreResponse = {
-                            location: core_responses.locations.control_unit,
-                            message: core_responses.messages.success,
-                            status: core_responses.status.success
-                        }
-                        return ipcEvent.reply(NetCatBrowserEvents['core-response'], coreResponse);
-                    }
-                    else if(statusCode == core_responses.status.error) {
-                        const coreResponse = {
-                            location: core_responses.locations.control_unit,
-                            message: core_responses.messages.error,
-                            status: core_responses.status.error
-                        }
-                        return ipcEvent.reply(NetCatBrowserEvents['core-response'], coreResponse);
-                    }
-                }
+                return ipcEvent.reply(NetCatBrowserEvents['core-response'], coreResponse);
             }
         }
         if(data.location == locations.bridge) {
@@ -128,7 +82,6 @@ async function control_unit(mainWindow) {
             }
             if(data.status == core_responses.status.success) {
                 if(data.message == "returned home") {
-                    activityData.details = "En el menu principal";
                     const coreResponse = {
                         location: core_responses.locations.control_unit,
                         message: core_responses.messages.success,
@@ -137,7 +90,50 @@ async function control_unit(mainWindow) {
                     return ipcEvent.reply(NetCatBrowserEvents['core-response'], coreResponse);
                 }
                 if(data.message == "search something") {
-                    activityData.details = "Buscando: " + data.query;
+                    const coreResponse = {
+                        location: core_responses.locations.control_unit,
+                        message: core_responses.messages.success,
+                        status: core_responses.status.success
+                    }
+                    return ipcEvent.reply(NetCatBrowserEvents['core-response'], coreResponse);
+                }
+                if(data.message == "select-pdf") {
+                    const { canceled, filePaths } = dialog.showOpenDialog({
+                        filters: [{ name: 'PDF Files', extensions: ['pdf'] }],
+                        properties: ['openFile']
+                    }).then((reply) => {
+                        /*dialog.showMessageBox(mainWindow, {
+                            type: 'info',
+                            title: 'Debug',
+                            message: 'Leyendo valor de "algo"...' + reply.filePaths[0],
+                          });*/
+                        let content;
+                    
+                        if (reply.canceled || reply.filePaths.length === 0) content = { canceled: true };
+                        else content = { canceled: false, filePath: reply.filePaths[0] };
+                        
+                        
+                        const coreResponse = {
+                            location: core_responses.locations.control_unit,
+                            message: core_responses.messages.success,
+                            content: content,
+                            status: core_responses.status.success
+                        }
+                        /*dialog.showMessageBox(mainWindow, {
+                            type: 'info',
+                            title: 'Debug',
+                            message: 'Leyendo valor de "coreResponse":' + coreResponse.status,
+                          });*/
+                        return ipcEvent.reply(NetCatBrowserEvents['core-response'], coreResponse);
+                    });
+                }
+                if(data.message == "testdebug") {
+                    dialog.showMessageBox(mainWindow, {
+                        type: 'info',
+                        title: 'Debug',
+                        message: 'He recibido la señal testdebug',
+                    });
+
                     const coreResponse = {
                         location: core_responses.locations.control_unit,
                         message: core_responses.messages.success,

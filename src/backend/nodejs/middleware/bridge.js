@@ -1,10 +1,19 @@
-const { contextBridge, ipcRenderer } = require('electron');
+const { contextBridge, ipcRenderer, dialog } = require('electron');
 
 contextBridge.exposeInMainWorld('electronAPI', {
     input: (data) => {
         ipcRenderer.send('data', data);
         ipcRenderer.on('core-response', (evento, data) => {
-            return;
+            dialog.showMessageBox(mainWindow, {
+                type: 'info',
+                title: 'Debug',
+                message: 'Leyendo en el puente!":',
+            });
+            if(data.content) {
+                if(data.content.canceled) return null;
+                else return data.content.filePath;
+            }
+            else return;
         });
     }
 });
