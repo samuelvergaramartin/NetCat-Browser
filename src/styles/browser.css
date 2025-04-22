@@ -113,6 +113,9 @@ body  {
     color: cyan;
     font-size: 15px;
 }
+.options:hover {
+    background-color: orange;
+}
 .main {
     background-color: #2B2A33;
 }
