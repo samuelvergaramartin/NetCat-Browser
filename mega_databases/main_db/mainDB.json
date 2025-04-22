@@ -1,8 +1,8 @@
 {
   "db_name": "main_db",
-  "platform": "Linux",
-  "homedir": "/home/sam170703dev",
+  "platform": "Windows",
+  "homedir": "C:\\Users\\Anonymous Cat",
   "hostname": "SamuelPC",
-  "tempdir": "/tmp",
-  "username": "sam170703dev"
+  "tempdir": "C:\\Users\\ANONYM~1\\AppData\\Local\\Temp",
+  "username": "Anonymous Cat"
 }

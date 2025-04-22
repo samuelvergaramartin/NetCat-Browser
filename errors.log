@@ -1,5 +1,0 @@
-(node:142973) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 11 ready listeners added to [RPCClient]. Use emitter.setMaxListeners() to increase limit
-(Use `electron --trace-warnings ...` to show where the warning was created)
-Warning: loader_scanned_icd_add: Could not get 'vkCreateInstance' via 'vk_icdGetInstanceProcAddr' for ICD libGLX_nvidia.so.0
-Warning: /usr/lib32/libvulkan_radeon.so: clase ELF errónea: ELFCLASS32
-Warning: loader_icd_scan: Failed loading library associated with ICD JSON /usr/lib32/libvulkan_radeon.so. Ignoring this JSON

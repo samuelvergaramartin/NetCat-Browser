@@ -1,6 +1,6 @@
 {
   "name": "netcat-browser",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "description": "NetCat Browser | Navegador Web",
   "main": "index.js",
   "scripts": {
@@ -11,10 +11,9 @@
   "author": "Samuel Vergara Martín",
   "license": "ISC",
   "dependencies": {
-    "discord-rpc": "^4.0.1",
     "megadb": "^3.4.0"
   },
   "devDependencies": {
-    "electron": "^27.2.1"
+    "electron": "^35.2.0"
   }
 }

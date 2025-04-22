@@ -5,15 +5,45 @@ body  {
     background-color: #2B2A33;
 }
 .header_table {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+
+
     background-color: #42414d;
     color: aqua;
-}
-.url_input {
-    background-color: #2B2A33;
-    color: red;
-    ::placeholder {
-        color: red;
+
+    input[type=text] {
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-left: 5px;
+        border-radius: 20px;
+        background-color: white;
+        color:#2B2A33;
+        font-size: 15px;
+        
     }
+
+    ::placeholder {
+        font-size: 15px;
+        color:#2B2A33;
+    }
+}
+.header_table > fieldset {
+    border: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+
+
+    display: flex;
+    flex-wrap: wrap;
 }
 .logo {
     display: flex;
@@ -35,15 +65,23 @@ body  {
     box-sizing: border-box;
     
     input[type=text] {
-        background-color: red;
-        color: cyan;
-        font-size:25px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-left: 5px;
+        border-radius: 20px;
+        background-color: white;
+        color:#2B2A33;
+        font-size: 20px;
+
+
+        flex-grow: 1;
+        min-width: 0;
     }
 
     ::placeholder {
         font-size: 20px;
-        background-color: red;
-        color: cyan;
+        background-color: white;
+        color:#2B2A33;
     }
 }
 .main_image {
@@ -62,35 +100,21 @@ body  {
 .search_button:hover {
     background-color: orange;
 }
-/*.main_image {
-    margin-left: 90%;
-    scale: 0.3;
-    align-items: center;
-}
-.NetCat-Browser-text {
-    margin-left: 130%;
-}
-.search_fieldset_input {
-    box-sizing: border-box;
-    margin-left: 120%;
-    size: 100;
-    background-color: #42414d;
-    ::placeholder {
-        background-color: red;
-        color: cyan;
-    }
-}
-.search_button {
-    background-color: red;
-    color: cyan;
-}*/
 .url_search_button {
     background-color: red;
     color: cyan;
+    font-size: 15px;
+}
+.url_search_button:hover {
+    background-color: orange;
 }
 .options {
     background-color: red;
     color: cyan;
+    font-size: 15px;
+}
+.options:hover {
+    background-color: orange;
 }
 .main {
     background-color: #2B2A33;
