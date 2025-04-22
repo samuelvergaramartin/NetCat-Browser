@@ -150,7 +150,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const searchUrl = `https://search.brave.com/search?q=${encodeURIComponent(searchQuery)}`;
 
         if(search_input.value && search_input.value.length > 0) {
-            data = {
+            const data = {
                 location: "browser-page",
                 message: "search something",
                 query: `${searchQuery}`,
@@ -169,7 +169,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-    async function loadPDFOption() {
+    function loadPDFOption() {
         const data = {
             location: "browser-page",
             message: "select-pdf",
@@ -187,7 +187,11 @@ document.addEventListener("DOMContentLoaded", function() {
         searchInNewWindowSearchButton();
     });
 
-    /*return_home_button.addEventListener('click', ()=> {
+    loadPDFButton.addEventListener('click', () => {
+        loadPDFOption();
+    });
+
+    return_home_button.addEventListener('click', ()=> {
         backHome();
     })
 
@@ -195,25 +199,22 @@ document.addEventListener("DOMContentLoaded", function() {
         newHome();
     })
 
-    search_in_other_window_boton.addEventListener('click', () => {
+    /*search_in_other_window_boton.addEventListener('click', () => {
         searchInNewWindow();
     })*/
 
     search_input.addEventListener('keypress', (key) => {
         if(key.key == "Enter") {
-            console.log("Pulsado!");
             searchInNewWindowSearchButton();
         }
-    })
+    });
 
-    url_input.addEventListener('keypress', (evento) => {
-        if(evento.key == "Enter") {
+    url_input.addEventListener('keypress', (key) => {
+        if(key.key == "Enter") {
             searchInNewWindow();
         }
-    })
+    });
 
-    loadPDFButton.addEventListener('click', () => {
-        loadPDFOption();
-    })
+    
 
 });
