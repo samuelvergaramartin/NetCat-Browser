@@ -78,6 +78,7 @@ async function control_unit(mainWindow) {
                         icon: path.join(__dirname, '../images/NetCat-2-years-image.ico') });
                     
                     newWindow.loadFile(routes.browserPage);
+                    newWindow.setMenu(null);
                 }
             }
             if(data.status == core_responses.status.success) {
@@ -98,15 +99,10 @@ async function control_unit(mainWindow) {
                     return ipcEvent.reply(NetCatBrowserEvents['core-response'], coreResponse);
                 }
                 if(data.message == "select-pdf") {
-                    const { canceled, filePaths } = dialog.showOpenDialog({
+                    dialog.showOpenDialog({
                         filters: [{ name: 'PDF Files', extensions: ['pdf'] }],
                         properties: ['openFile']
                     }).then((reply) => {
-                        /*dialog.showMessageBox(mainWindow, {
-                            type: 'info',
-                            title: 'Debug',
-                            message: 'Leyendo valor de "algo"...' + reply.filePaths[0],
-                          });*/
                         let content;
                     
                         if (reply.canceled || reply.filePaths.length === 0) content = { canceled: true };
@@ -119,27 +115,9 @@ async function control_unit(mainWindow) {
                             content: content,
                             status: core_responses.status.success
                         }
-                        /*dialog.showMessageBox(mainWindow, {
-                            type: 'info',
-                            title: 'Debug',
-                            message: 'Leyendo valor de "coreResponse":' + coreResponse.status,
-                          });*/
+
                         return ipcEvent.reply(NetCatBrowserEvents['core-response'], coreResponse);
                     });
-                }
-                if(data.message == "testdebug") {
-                    dialog.showMessageBox(mainWindow, {
-                        type: 'info',
-                        title: 'Debug',
-                        message: 'He recibido la señal testdebug',
-                    });
-
-                    const coreResponse = {
-                        location: core_responses.locations.control_unit,
-                        message: core_responses.messages.success,
-                        status: core_responses.status.success
-                    }
-                    return ipcEvent.reply(NetCatBrowserEvents['core-response'], coreResponse);
                 }
             }
         }
