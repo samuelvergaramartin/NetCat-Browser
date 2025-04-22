@@ -21,7 +21,7 @@ async function startNetCatBrowser(mainWindow) {
         icon: path.join(__dirname, '../images/NetCat-Browser.ico') });
 
         mainWindow.loadFile(routes.loaderPage);
-        //mainWindow.setMenu(null);
+        mainWindow.setMenu(null);
 
         mainWindow.webContents.once('did-finish-load', (evento) => {
                 const loadPage = setTimeout(() => {
