@@ -129,7 +129,6 @@ document.addEventListener("DOMContentLoaded", function() {
             }
     
             const iframe = document.createElement("iframe");
-            iframe.id = "my-iframe";
             iframe.src = searchUrl;
             iframe.width = "100%";
             iframe.height = "985";
@@ -176,37 +175,8 @@ document.addEventListener("DOMContentLoaded", function() {
             message: "select-pdf",
             status: 200
         }
-        try {
-            /*const result = */window.electronAPI.input((data)).then((algo) => {
-                debug();
-            });
-        } catch (error) {
-            console.log(error)
-            //while(true) {};
-        }
-        
-        /*if(result != null) {
-            while (main_container.firstChild) {
-                main_container.removeChild(main_container.firstChild);
-            }
-    
-            const iframe = document.createElement("iframe");
-            iframe.id = "my-iframe";
-            iframe.src = `file://${result}`;
-            iframe.width = "100%";
-            iframe.height = "985";
-    
-            main_container.appendChild(iframe);
-        }*/
-    }
 
-    function debug() {
-        const data = {
-            location: "browser-page",
-            message: "testdebug",
-            status: 200
-        }
-        window.electronAPI.input((data));
+        window.electronAPI.input((data))
     }
 
     url_search_button.addEventListener('click', () => {
