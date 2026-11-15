@@ -13,4 +13,4 @@ Mi primer Navegador Web hecho con Electron
 
 - version 0.0.5 -> Enlace de descarga para Windows: https://drive.google.com/file/d/10BtzYufUTXm725kmDxFQdwgsJx5u732M/view?usp=drive_link
 
-- version 0.0.5 -> Enlace de descarga para Linux / MAC: Proximamente...
+- version 0.0.5 -> Enlace de descarga para Linux / MAC: https://drive.google.com/file/d/15u-qbbHzpd3UyfY_LbqEcChOtETDPnRH/view?usp=drive_link
